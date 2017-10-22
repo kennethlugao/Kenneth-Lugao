@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+
+
+<body>
+
+     
+    <ul class = "nav navbar-nav navbar-right">
+     <li>@Html.ActionLink("Register","Create","Create")</li>
+     <li>@Html.ActionLink("Login", "Login", "Create")</li>
+      <li>@Html.ActionLink("ADMIN","adminlog","Create")</li>
+</ul>
+        </div>
+         </div>
+    </div>
+    @model mess.Models.Class1
+
+@using (Html.BeginForm())
+{             
+
+    
+            
+           <center><text>Username</text><h5>@Html.TextBoxFor(e => e.Uname, new { @class = "form-control", @placeholder = "Username" }) <span style="color:Red">
+             @Html.ValidationMessageFor(v => v.Uname, "", new { @class = "error" })</span></h5></center>
+            <center><text>Password</text><h5>@Html.PasswordFor(e => e.Pword, new { @class = "form-control", @placeholder = "Passsword" }) <span style="color:Red"> 
+            @Html.ValidationMessageFor(v => v.Pword, "", new { @class = "error" })</span></h5></center>
+           <center><input type="submit" value="Login" class="btn btn-block btn-primary" /></center>
+            <center><h5>Dont Have an Account Yet?
+              @Html.ActionLink("Sign Up","Create","Create")
+              </h5></center>
+       
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>    
+
+
+

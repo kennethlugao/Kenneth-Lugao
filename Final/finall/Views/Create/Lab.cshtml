@@ -1,0 +1,86 @@
+﻿@{
+    Layout = null;
+}
+
+@model mess.Models.date
+
+@using (Html.BeginForm())
+{    
+<html>
+
+
+<body>
+
+<div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+ <div class="navbar-header"><a class="navbar-brand" href="#">ITELECT</a>
+            
+        </div>
+   <div class = "collapse navbar-collapse navbar-menubuilder">
+        <div class="navbar navbar-custom">
+    <ul class="nav navbar-nav">
+     <li>@Html.ActionLink("Homepage", "Index", "Home")</li>
+    <li>@Html.ActionLink("About Us", "About", "Home")</li>
+    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+    </ul>
+    <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Reserve type</button>
+  <div id="myDropdown" class="dropdown-content">
+    @Html.ActionLink("Book", "Book", "Create")
+  
+  
+   </div>
+    <ul class = "nav navbar-nav navbar-right">
+     <li>@Html.ActionLink("Logout", "Logout", "Create")</li>
+</ul>
+         </div>
+    </div>
+   </div>
+   <div class="Container">
+        <div class=" registrationform">
+    @if (Session["fname"] != null)
+    {
+<text>
+<h3>Welcome @Session["fname"].ToString() </h3>
+</text>
+    }
+
+
+	
+<legend>Rooms</legend>
+             <p>@Html.RadioButtonFor(e => e.Lab, "C1")C1</p>
+            <p> @Html.RadioButtonFor(m => m.Lab, "C2")C2</p>
+            @* <p> @Html.RadioButtonFor(m => m.Lab, "C3")C3</p>
+              <p> @Html.RadioButtonFor(m => m.Lab, "Cisco")Cisco</p>*@
+          
+<legend>Date of Use</legend>
+            <center>
+            <h5 class="crazy">@Html.EditorFor(model => model.dateofuse, new { @class = "form-control", @placeholder = "Passsword" }) 
+            <span style="color:Red"> 
+            @Html.ValidationMessageFor(v => v.dateofuse, "", new { @class = "error" })
+            </span>
+            </h5>
+            </center>
+<legend>Time of Use</legend>
+             <center>
+             <h5 class="crazy">@Html.EditorFor(model => model.timeofuse, new { @class = "form-control", @placeholder = "Passsword" }) 
+             <span style="color:Red"> 
+            @Html.ValidationMessageFor(v => v.timeofuse, "", new { @class = "error" })
+            </span>
+            </h5>
+            </center>
+
+			<legend>Purpose of reservation</legend>
+            <center>
+            <form class="crazy">@Html.TextAreaFor(e => e.purpose, new { @class = "form-control", @placeholder = "Purpose" }) 
+            <span style="color:Red">
+             @Html.ValidationMessageFor(v => v.purpose, "", new { @class = "error" })
+             </span>
+             </form>
+             </center>
+
+             <input type="submit" value="Reserve" class="btn btn-block btn-primary" />
+			 </div>
+</div>
+</body>
+</html>
+}    
